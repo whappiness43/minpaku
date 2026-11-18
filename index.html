@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="清掃管理">
+<meta name="theme-color" content="#ffffff">
+<title>清掃管理</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A7%B9%3C/text%3E%3C/svg%3E">
+<style>
+html,body{margin:0;height:100%;background:#fff}
+iframe{position:fixed;top:0;left:0;border:0;width:100%;height:100%}
+#msg{font:16px/1.7 -apple-system,"Hiragino Kaku Gothic ProN",Meiryo,sans-serif;padding:24px;color:#374151}
+</style>
+</head>
+<body>
+<script>
+/* 民泊清掃管理アプリの入口。アプリを中に表示するだけのページです（Googleの帯を出さないため）。
+   リンクに付いている ?k= ?o= ?d= ?r= などは、そのままアプリに渡します。合言葉はこのページには書きません。 */
+(function () {
+  var APP = 'https://script.google.com/macros/s/AKfycbxN1YYTf37V-royM5dfg1LXOsK6fRl4rU2DONJe7Xquk7rkR60S6_gDdE4LhKreuLU/exec';
+  var q = location.search;
+  if (!/[?&](k|o|r)=/.test(q)) {
+    document.body.innerHTML = '<div id="msg">このページは、管理者から渡されたリンク（またはLINEのリンク）から開いてください。</div>';
+    return;
+  }
+  var f = document.createElement('iframe');
+  f.src = APP + q;
+  f.title = '清掃管理';
+  f.allow = 'clipboard-write';
+  document.body.appendChild(f);
+})();
+</script>
+</body>
+</html>
